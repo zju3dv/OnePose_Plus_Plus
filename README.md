@@ -3,6 +3,7 @@
 <br/>
 
 > OnePose++: Keypoint-Free One-Shot Object Pose Estimation without CAD Models
+
 > [Xingyi He](https://github.com/hxy-123/)<sup>\*</sup>, [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>,[Yu'ang Wang](https://github.com/angshine), [Di Huang](https://github.com/dihuangdh), [Hujun Bao](http://www.cad.zju.edu.cn/home/bao/), [Xiaowei Zhou](https://xzhou.me)
 > NeurIPS 2022
 
