@@ -2,8 +2,8 @@
 ### [Project Page](https://zju3dv.github.io/onepose_plus_plus) | [Paper](https://openreview.net/pdf?id=BZ92dxDS3tO)
 <br/>
 
-> OnePose++: Keypoint-Free One-Shot Object Pose Estimation without CAD Models
-> [Xingyi He](https://github.com/hxy-123/)<sup>\*</sup>, [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>,[Yu'ang Wang](https://github.com/angshine), [Di Huang](https://github.com/dihuangdh), [Hujun Bao](http://www.cad.zju.edu.cn/home/bao/), [Xiaowei Zhou](https://xzhou.me)
+> OnePose++: Keypoint-Free One-Shot Object Pose Estimation without CAD Models                                                                               
+> [Xingyi He](https://github.com/hxy-123/)<sup>\*</sup>, [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>, [Yu'ang Wang](https://github.com/angshine), [Di Huang](https://github.com/dihuangdh), [Hujun Bao](http://www.cad.zju.edu.cn/home/bao/), [Xiaowei Zhou](https://xzhou.me)                              
 > NeurIPS 2022
 
 ![demo_vid](assets/demo.gif)
@@ -11,7 +11,7 @@
 ## TODO List
 - [x] Training, inference and demo code.
 - [x] Pipeline to reproduce the evaluation results on the OnePose dataset and proposed OnePose_LowTexture dataset.
-- [ ] Use multiple GPUs for parallelized reconstruction and evaluation multiple objects.
+- [ ] Use multiple GPUs for parallelized reconstruction and evaluation of multiple objects.
 - [ ] `OnePose Cap` app: we are preparing for the release of the data capture app to the App Store (iOS only), please stay tuned.
 
 ## Installation
@@ -34,7 +34,7 @@ Note that the efficient optimizer DeepLM is used in our SfM refinement phase. If
 
 [COLMAP](https://colmap.github.io/) is also used in this project for Structure-from-Motion. Please refer to the official [instructions](https://colmap.github.io/install.html) for the installation.
 
-First, download the [pretrained models](https://zjueducn-my.sharepoint.com/:f:/g/personal/12121064_zju_edu_cn/EhRhr5PMG-ZLkQjClFCUYhIB_6-307bBmepX_5Cej4Z_wg?e=StCrZZ), including our 2D-3D matching and LoFTR models. Then move them to `${REPO_ROOT}/weights`.
+Download the [pretrained models](https://zjueducn-my.sharepoint.com/:f:/g/personal/12121064_zju_edu_cn/EhRhr5PMG-ZLkQjClFCUYhIB_6-307bBmepX_5Cej4Z_wg?e=StCrZZ), including our 2D-3D matching and LoFTR models. Then move them to `${REPO_ROOT}/weights`.
 
 [Optional] You may optionally try out our web-based 3D visualization tool [Wis3D](https://github.com/zju3dv/Wis3D) for convenient and interactive visualizations of feature matches and point clouds. We also provide many other cool visualization features in Wis3D, welcome to try it out.
 
@@ -43,7 +43,7 @@ First, download the [pretrained models](https://zjueducn-my.sharepoint.com/:f:/g
 pip install -i https://test.pypi.org/simple/ wis3d
 ```
 ## Demo
-After the installation, please refer to [this page](doc/demo.md) to run the demo with your custom data.
+After the installation, you can refer to [this page](doc/demo.md) to run the demo with your custom data.
 
 
 ## Training and Evaluation

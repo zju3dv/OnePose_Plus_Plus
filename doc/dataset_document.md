@@ -21,8 +21,8 @@ The data structure of OnePose_LowTexture is the same as the OnePose dataset:
 ```
 There are multiple sequences for each object. We use the first sequence (objname-1) for reconstruction and the last sequence (objname-2) for evaluation, similar to OnePose.
 For each object:
-`Frames.m4v` is the captured object video.
-`intrinsics.txt` contains an intrinsic matrix of original images in the video. All of the original images share the same intrinsic.
-`box3d_corners.txt` saves eight corners' coordinates of annotated object 3D bounding box.
-`color` directory contains all of the cropped foreground images (resized to $512\times512$). For each cropped image `i.png`, its corresponding intrinsic file and pose file are located in `intrin_ba/i.txt` and `poses_ba/i.txt`, respectively.
-The intrinsic file in the dataset contains the $3\times3$ projection matrix of the corresponding image. And the pose is defined as a $4\times4$ homogeneous transformation from the object system to the camera coordinate system.
+* `Frames.m4v` is the captured object video.
+* `intrinsics.txt` contains an intrinsic matrix of original images in the video. All of the original images share the same intrinsic.
+* `box3d_corners.txt` saves eight corners' coordinates of annotated object 3D bounding box.
+* `color` directory contains all of the cropped foreground images (resized to $512\times512$). For each cropped image `i.png`, its corresponding intrinsic file and pose file are located in `intrin_ba/i.txt` and `poses_ba/i.txt`, respectively.
+* The intrinsic file in the dataset contains the $3\times3$ projection matrix of the corresponding image. And the pose is defined as a $4\times4$ homogeneous transformation from the object system to the camera coordinate system.
