@@ -228,7 +228,6 @@ logs/
 outputs/
 *.DS_Store
 temp/
-src/third_party/sensemap
 visual/
 .hydra/*.yaml
 # *.yaml
@@ -239,4 +238,3 @@ command
 pretrained
 .history
 .hydra/**
-submodules
