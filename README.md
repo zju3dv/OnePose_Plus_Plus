@@ -2,8 +2,8 @@
 ### [Project Page](https://zju3dv.github.io/onepose_plus_plus) | [Paper](https://openreview.net/pdf?id=BZ92dxDS3tO)
 <br/>
 
-> OnePose++: Keypoint-Free One-Shot Object Pose Estimation without CAD Models 
-> [Xingyi He](https://github.com/hxy-123/)<sup>\*</sup>, [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>,[Yu'ang Wang](https://github.com/angshine), [Di Huang](https://github.com/dihuangdh), [Hujun Bao](http://www.cad.zju.edu.cn/home/bao/), [Xiaowei Zhou](https://xzhou.me)
+> OnePose++: Keypoint-Free One-Shot Object Pose Estimation without CAD Models                                                                               
+> [Xingyi He](https://github.com/hxy-123/)<sup>\*</sup>, [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>, [Yu'ang Wang](https://github.com/angshine), [Di Huang](https://github.com/dihuangdh), [Hujun Bao](http://www.cad.zju.edu.cn/home/bao/), [Xiaowei Zhou](https://xzhou.me)                              
 > NeurIPS 2022
 
 ![demo_vid](assets/demo.gif)
