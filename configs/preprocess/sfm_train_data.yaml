@@ -1,0 +1,111 @@
+# @package _global_
+
+type: sfm
+work_dir: ${hydra:runtime.cwd}
+data_base_dir: "${work_dir}/data/datasets/train_data"
+output_base_dir: "data/datasets/sfm_output"
+
+match_type: "softmax"
+enable_post_refine: True
+
+overwrite_all: True
+overwrite_coarse: True
+overwrite_fine: True
+
+use_global_ray: False
+use_local_ray: True
+
+ray:
+  slurm: False
+  n_workers: 4
+  n_cpus_per_worker: 5
+  n_gpus_per_worker: 1
+  local_mode: False
+
+dataset:
+  max_num_kp3d: 15000
+  max_num_kp2d: 10000
+
+  data_dir: ${data_base_dir}
+  top_k_obj: null
+  num_seq: null # Use all sequences!
+  ids:
+    - '0410'
+    - '0413'
+    - '0414'
+    - '0415'
+    - '0416'
+    - '0418'
+    - '0420'
+    - '0421'
+    - '0443'
+    - '0445'
+    - '0448'
+    - '0460'
+    - '0461'
+    - '0462'
+    - '0463'
+    - '0464'
+    - '0465'
+    - '0477'
+    - '0479'
+    - '0484'
+    - '0499'
+    - '0506'
+    - '0507'
+    - '0509'
+    - '0512'
+    - '0513'
+    - '0516'
+    - '0529'
+    - '0530'
+    - '0531'
+    - '0532'
+    - '0533'
+    - '0536'
+    - '0542'
+    - '0545'
+    - '0546'
+    - '0549'
+    - '0556'
+    - '0561'
+    - '0562'
+    - '0563'
+    - '0566'
+    - '0567'
+    - '0569'
+    - '0571'
+    - '0572'
+    - '0573'
+    - '0574'
+    - '0575'
+  exception_obj_names:
+    -
+
+  outputs_dir: ${output_base_dir}
+
+network:
+  detection: loftr
+  matching: loftr
+
+sfm:
+  gen_cov_from: 'pose'
+  down_ratio: 5
+  gap: 3
+  covis_num: 10
+
+post_optim:
+  coarse_recon_data:
+    feature_track_assignment_strategy: 'greedy'
+  optimizer:
+    solver_type: 'SecondOrder'
+    residual_mode: "geometry_error"
+    optimize_lr:
+      depth: 0.03
+
+post_process:
+  filter_bbox_before_filter_track_length: True
+  skip_bbox_filter: False
+
+verbose: True
+disable_lightning_logs: True

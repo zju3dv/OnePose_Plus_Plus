@@ -1,0 +1,6 @@
+[submodule "submodules/LoFTR"]
+	path = submodules/LoFTR
+	url = git@github.com:zju3dv/LoFTR.git
+[submodule "submodules/DeepLM"]
+	path = submodules/DeepLM
+	url = https://github.com/hjwdzh/DeepLM.git

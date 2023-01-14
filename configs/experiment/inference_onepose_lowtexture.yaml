@@ -1,0 +1,185 @@
+# @package _global_
+
+type: inference
+
+
+data_base_dir: "data/datasets/lowtexture_test_data"
+sfm_base_dir: "data/datasets/sfm_output"
+
+match_type: softmax
+task_name: inference_onepose_lowtexture
+verbose: False
+
+use_global_ray: False
+use_local_ray: True
+
+ray:
+  slurm: False
+  n_workers: 4
+  n_cpus_per_worker: 5
+  n_gpus_per_worker: 1
+  local_mode: False
+
+model:
+  pretrained_ckpt: weight/OnePosePlus_model.ckpt
+
+  OnePosePlus:
+    loftr_backbone:
+      type: "ResNetFPN"
+      resolution: [8, 2]
+      resnetfpn:
+        block_type: "BasicBlock"
+        initial_dim: 128
+        block_dims: [128, 196, 256]
+        output_layers: [3, 1]
+      pretrained: "weight/LoFTR_wsize9.ckpt"
+      pretrained_fix: False
+
+    interpol_type: "bilinear"
+
+    keypoints_encoding:
+      enable: True
+      type: mlp_linear
+      descriptor_dim: 256
+      keypoints_encoder: [32, 64, 128]
+      norm_method: "instancenorm"
+
+    positional_encoding:
+      enable: True
+      pos_emb_shape: [256, 256]
+
+    loftr_coarse:
+      type: "LoFTR"
+      d_model: 256
+      d_ffm: 128
+      nhead: 8
+      layer_names: ["self", "cross"]
+      layer_iter_n: 3
+      dropout: 0.
+      attention: "linear"
+      norm_method: "layernorm"
+
+      kernel_fn: "elu + 1"
+      d_kernel: 16
+      redraw_interval: 2
+      rezero: null
+      final_proj: False
+
+    coarse_matching:
+      type: "dual-softmax"
+      thr: 0.1
+      feat_norm_method: "sqrt_feat_dim"
+      border_rm: 2
+
+      dual_softmax:
+        temperature: 0.08
+
+      train:
+        train_padding: True # Good to be true
+        train_coarse_percent: 0.3 # save GPU memory
+        train_pad_num_gt_min: 200 # avoid deadlock; better convergence
+
+    loftr_fine:
+      enable: True
+      # Fine preprocess:
+      window_size: 5
+      coarse_layer_norm: False
+
+      # Fine module
+      type: "LoFTR"
+      d_model: 128
+      nhead: 8
+      layer_names: ["self", "cross"]
+      layer_iter_n: 1
+      dropout: 0.0
+      attention: "linear"
+      norm_method: layernorm
+
+      kernel_fn: "elu + 1"
+      d_kernel: 16
+      redraw_interval: 2
+      rezero: null
+      final_proj: False
+
+    fine_matching:
+        enable: True
+        type: 's2d'
+
+        s2d:
+            type: 'heatmap'
+
+  eval_metrics:
+    point_cloud_rescale: 1000
+    pnp_reprojection_error: 8
+    pose_thresholds: [1, 3, 5]
+    model_unit: 'm'
+    eval_ADD_metric: False
+    ADDS: False
+    use_pycolmap_ransac: False
+
+datamodule:
+    # 3D part
+    shape3d_val: 7000
+    load_3d_coarse: True
+    pad3D: False # Use all 3D points
+
+    # 2D part
+    img_pad: False
+    img_resize: [512, 512]
+    df: 8
+    coarse_scale: 0.125
+
+network:
+  detection: loftr
+  matching: loftr
+
+object_detector_method: "GT"
+data_dir: ${data_base_dir}
+top_k_obj: null
+num_val_seq: 1 # last n objects
+ids:
+    - '0700'
+    - '0701'
+    - '0702'
+    - '0703'
+    - '0706'
+    - '0707'
+    - '0708'
+    - '0710'
+    - '0712'
+    - '0713'
+    - '0714'
+    - '0715'
+    - '0718'
+    - '0719'
+    - '0720'
+    - '0721'
+    - '0722'
+    - '0723'
+    - '0724'
+    - '0725'
+    - '0726'
+    - '0727'
+    - '0728'
+    - '0729'
+    - '0730'
+    - '0731'
+    - '0732'
+    - '0733'
+    - '0734'
+    - '0735'
+    - '0736'
+    - '0737'
+    - '0740'
+    - '0741'
+    - '0742'
+    - '0743'
+    - '0744'
+    - '0745'
+    - '0746'
+    - '0748'
+exception_obj_names: 
+    -
+
+output:
+  txt_dir: 'data/output/${task_name}'

@@ -1,0 +1,77 @@
+# @package _global_
+
+type: merge_anno
+task_name: onepose_plus_train
+match_type: 'softmax'
+split: 'train'
+
+data_base_dir: 'data/datasets/train_data'
+sfm_dir: 'data/datasets/sfm_output'
+merge_output_dir: 'data/datasets/merged_anno'
+
+names:
+    # Train Set
+    - '0410'
+    - '0413'
+    - '0414'
+    - '0415'
+    - '0416'
+    - '0418'
+    - '0420'
+    - '0421'
+    - '0443'
+    - '0445'
+    - '0448'
+    - '0460'
+    - '0461'
+    - '0462'
+    - '0463'
+    - '0464'
+    - '0465'
+    - '0477'
+    - '0479'
+    - '0484'
+    - '0499'
+    - '0506'
+    - '0507'
+    - '0509'
+    - '0512'
+    - '0513'
+    - '0516'
+    - '0529'
+    - '0530'
+    - '0531'
+    - '0532'
+    - '0533'
+    - '0536'
+    - '0542'
+    - '0545'
+    - '0546'
+    - '0549'
+    - '0556'
+    - '0561'
+    - '0562'
+    - '0563'
+    - '0566'
+    - '0567'
+    - '0569'
+    - '0571'
+    - '0572'
+    - '0573'
+    - '0574'
+    - '0575'
+
+network:
+    detection: loftr
+    matching: loftr
+
+datamodule:
+    data_dir: ${data_base_dir}
+    sfm_dir: ${sfm_dir}
+
+    out_path: ${merge_output_dir}/${task_name}/${split}.json
+
+
+hydra:
+    run:
+        dir: ${work_dir}

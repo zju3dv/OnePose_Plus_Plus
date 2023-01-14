@@ -1,0 +1,49 @@
+# @package _global_
+
+type: sfm
+work_dir: ${hydra:runtime.cwd}
+match_type: "softmax"
+enable_post_refine: True
+verbose: True
+
+overwrite_all: True
+overwrite_coarse: True
+overwrite_fine: True
+
+use_global_ray: False
+use_local_ray: True
+
+dataset:
+  max_num_kp3d: 15000
+  max_num_kp2d: 10000
+
+  data_dir:
+    - null # Will be filled by demo_pipeline.sh
+
+  outputs_dir: null # Will be filled by demo_pipeline.sh
+
+network:
+  detection: loftr
+  matching: loftr
+
+sfm:
+  gen_cov_from: 'pose'
+  down_ratio: 5
+  gap: 3
+  covis_num: 10
+
+post_optim:
+  coarse_recon_data:
+    feature_track_assignment_strategy: 'greedy'
+  optimizer:
+    solver_type: 'SecondOrder'
+    residual_mode: "geometry_error"
+    optimize_lr:
+      depth: 0.03
+
+
+post_process:
+  filter_bbox_before_filter_track_length: True
+  skip_bbox_filter: False
+
+disable_lightning_logs: True

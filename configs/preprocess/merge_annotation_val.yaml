@@ -1,0 +1,50 @@
+# @package _global_
+
+type: merge_anno
+task_name: onepose_plus_train
+match_type: 'softmax'
+split: 'val'
+
+data_base_dir: 'data/datasets/val_data'
+sfm_dir: 'data/datasets/sfm_output'
+merge_output_dir: 'data/datasets/merged_anno'
+
+val_use_last_n_seq: 1
+names:
+    # Val set
+    - "0601"
+    - "0602"
+    - "0603"
+    - "0604"
+    - "0605"
+    - "0606"
+    - "0607"
+    - "0608"
+    - "0609"
+    - "0610"
+    - "0611"
+    - "0612"
+    - "0613"
+    - "0614"
+    - "0615"
+    - "0616"
+    - "0617"
+    - "0618"
+    - "0619"
+    - "0620"
+    - "0621"
+
+network:
+    detection: loftr
+    matching: loftr
+
+datamodule:
+    data_dir: ${data_base_dir}
+    sfm_dir: ${sfm_dir}
+
+    out_path: ${merge_output_dir}/${task_name}/${split}.json
+
+
+hydra:
+    run:
+        dir: ${work_dir}
