@@ -13,7 +13,7 @@ from .coarse_match_worker import *
 from ..dataset.loftr_coarse_dataset import LoftrCoarseDataset
 
 cfgs = {
-    "data": {"img_resize": 512, "df": 8, "shuffle": True},
+    "data": {"img_resize": None, "df": 8, "shuffle": True}, # None means use original size
     "matcher": {
         "model": {
             "weight_path": "weight/LoFTR_wsize9.ckpt",

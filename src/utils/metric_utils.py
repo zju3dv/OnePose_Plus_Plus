@@ -74,7 +74,7 @@ def add_metric(model_3D_pts, diameter, pose_pred, pose_target, percentage=0.1, s
     diameter_thres = diameter * percentage
     model_pred = np.dot(model_3D_pts, pose_pred[:, :3].T) + pose_pred[:, 3]
     model_target = np.dot(model_3D_pts, pose_target[:, :3].T) + pose_target[:, 3]
-
+    
     if syn:
         mean_dist_index = spatial.cKDTree(model_pred)
         mean_dist, _ = mean_dist_index.query(model_target, k=1)
@@ -230,12 +230,11 @@ def compute_query_pose_errors(
     data.update({"R_errs": [], "t_errs": [], "inliers": []})
     data.update({"R_errs_c": [], "t_errs_c": [], "inliers_c": []})
 
-    adds = False
     # Prepare query model for eval ADD metric
     if 'eval_ADD_metric' in configs:
         if configs['eval_ADD_metric'] and not training:
-            adds = configs['ADDS']
             image_path = data['query_image_path']
+            adds = True if ('0810-' in image_path) or ('0811-' in image_path) else False # Symmetric object in LINEMOD
             query_K_origin = data["query_intrinsic_origin"].cpu().numpy()
             model_path = osp.join(image_path.rsplit('/', 3)[0], 'model_eval.ply')
             if not osp.exists(model_path):

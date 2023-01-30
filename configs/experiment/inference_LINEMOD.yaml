@@ -3,11 +3,11 @@
 type: inference
 
 
-data_base_dir: "data/datasets/lowtexture_test_data"
+data_base_dir: "data/datasets/LM_dataset"
 sfm_base_dir: "data/datasets/sfm_output"
 
 match_type: softmax
-task_name: inference_onepose
+task_name: inference_LINEMOD
 verbose: False
 
 use_global_ray: False
@@ -110,11 +110,11 @@ model:
 
   eval_metrics:
     point_cloud_rescale: 1000
-    pnp_reprojection_error: 3.3
-    pose_thresholds: [1, 3, 5]
+    pnp_reprojection_error: 7
     model_unit: 'm'
-    eval_ADD_metric: False
-    use_pycolmap_ransac: False
+    eval_ADD_metric: True
+    pose_thresholds: [5] # 5cm 5degree
+    use_pycolmap_ransac: True
 
 datamodule:
     # 3D part
@@ -124,7 +124,7 @@ datamodule:
 
     # 2D part
     img_pad: False
-    img_resize: [512, 512]
+    img_resize: [256, 256]
     df: 8
     coarse_scale: 0.125
 
@@ -135,89 +135,25 @@ network:
 object_detector_method: "GT"
 data_dir: ${data_base_dir}
 top_k_obj: null
-num_val_seq: 1 # last n sequences
+num_val_seq: 1 # last n objects
 ids:
-    - '0408'
-    - '0409'
-    - '0419'
-    - '0422'
-    - '0423'
-    - '0424'
-    - '0447'
-    - '0450'
-    - '0452'
-    - '0455'
-    - '0456'
-    - '0458'
-    - '0459'
-    - '0466'
-    - '0468'
-    - '0469'
-    - '0470'
-    - '0471'
-    - '0472'
-    - '0473'
-    - '0474'
-    - '0476'
-    - '0480'
-    - '0483'
-    - '0486'
-    - '0487'
-    - '0488'
-    - '0489'
-    - '0490'
-    - '0492'
-    - '0493'
-    - '0494'
-    - '0495'
-    - '0496'
-    - '0497'
-    - '0498'
-    - '0500'
-    - '0501'
-    - '0502'
-    - '0503'
-    - '0504'
-    - '0508'
-    - '0510'
-    - '0511'
-    - '0517'
-    - '0518'
-    - '0519'
-    - '0520'
-    - '0521'
-    - '0522'
-    - '0523'
-    - '0525'
-    - '0526'
-    - '0527'
-    - '0534'
-    - '0535'
-    - '0537'
-    - '0539'
-    - '0543'
-    - '0547'
-    - '0548'
-    - '0550'
-    - '0551'
-    - '0552'
-    - '0557'
-    - '0558'
-    - '0559'
-    - '0560'
-    - '0564'
-    - '0565'
-    - '0568'
-    - '0570'
-    - '0577'
-    - '0578'
-    - '0579'
-    - '0580'
-    - '0582'
-    - '0583'
-    - '0594'
-    - '0595'
+    # Converted LINEMOD object ids:
+    - '0801'
+    - '0802'
+    - '0804'
+    - '0805'
+    - '0806'
+    - '0808'
+    - '0809'
+    
+    # Syn two object
+    - '0810'
+    - '0811'
 
+    - '0812'
+    - '0813'
+    - '0814'
+    - '0815'
 exception_obj_names: 
     -
 

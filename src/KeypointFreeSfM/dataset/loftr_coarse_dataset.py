@@ -49,14 +49,14 @@ class LoftrCoarseDataset(Dataset):
         img_path0, img_path1 = self.pair_list[idx].split(' ')
         img_scale0 = read_grayscale(
             img_path0,
-            (self.img_resize,),
+            (self.img_resize,) if self.img_resize is not None else None,
             df=self.df,
             ret_scales=True,
         )
         img0, scale0 = map(lambda x: x[None], img_scale0)  # no dataloader operation
         img_scale1 = read_grayscale(
             img_path1,
-            (self.img_resize,),
+            (self.img_resize,) if self.img_resize is not None else None,
             df=self.df,
             ret_scales=True,
         )

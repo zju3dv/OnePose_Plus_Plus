@@ -37,11 +37,10 @@ def get_pairswise_distances(pose_files):
     return dist, dR, seqs_ids
 
 
-def covis_from_pose(img_lists, covis_pairs_out, num_matched, do_ba=False):
+def covis_from_pose(img_lists, covis_pairs_out, num_matched, min_rotation=10):
     pose_lists = [path_utils.get_gt_pose_path_by_color(color_path) for color_path in img_lists]
     dist, dR, seqs_ids = get_pairswise_distances(pose_lists)
 
-    min_rotation = 10
     valid = dR > min_rotation
     np.fill_diagonal(valid, False)
     dist = np.where(valid, dist, np.inf)

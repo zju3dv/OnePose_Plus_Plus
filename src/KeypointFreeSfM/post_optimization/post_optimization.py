@@ -17,7 +17,7 @@ from .feature_aggregation import feature_aggregation_and_update
 
 cfgs = {
     "coarse_recon_data": {
-        "img_resize": 512,
+        "img_resize": None, # None means use original image size
         "df": 8,
         "feature_track_assignment_strategy": "greedy",
         "verbose": False,

@@ -498,7 +498,7 @@ class CoarseReconDataset(Dataset):
     def _get_single_item(self, idx):
         img_name = self.img_list[idx]
         img_scale = read_grayscale(
-            img_name, (self.img_resize,), df=self.df, ret_scales=True,
+            img_name, (self.img_resize,) if self.img_resize is not None else None, df=self.df, ret_scales=True,
         )
         img, scale = map(lambda x: x[None], img_scale)  # no dataloader operation
         data = {

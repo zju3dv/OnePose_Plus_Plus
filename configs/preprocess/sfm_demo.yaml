@@ -31,6 +31,7 @@ sfm:
   down_ratio: 5
   gap: 3
   covis_num: 10
+  min_rotation: 10
 
 post_optim:
   coarse_recon_data:

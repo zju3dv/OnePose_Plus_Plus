@@ -214,6 +214,7 @@ def sfm_core(cfg, img_lists, outputs_dir_root, obj_name):
                     img_lists,
                     covis_pairs_out,
                     covis_num,
+                    min_rotation=cfg.sfm.min_rotation
                 )
             else:
                 raise NotImplementedError

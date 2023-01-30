@@ -49,6 +49,7 @@ After the installation, you can refer to [this page](doc/demo.md) to run the dem
 ## Training and Evaluation
 ### Dataset setup 
 1. Download OnePose dataset from [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/zihaowang_zju_edu_cn/ElfzHE0sTXxNndx6uDLWlbYB-2zWuLfjNr56WxF11_DwSg?e=GKI0Df) and OnePose_LowTexture dataset from [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/12121064_zju_edu_cn/EUNsHyFIC7VDhXAYKYokkAIBpqosApirfpVoa7FBs2ogoA?e=Fko6uI), and extract them into `$/your/path/to/onepose_datasets`. 
+If you want to evaluate on LINEMOD dataset, download the real training data, test data and 3D object models from [CDPN](https://github.com/LZGMatrix/CDPN_ICCV2019_ZhigangLi), and detection results by YOLOv5 from [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/12121064_zju_edu_cn/EdodUdKGwHpCuvw3Cio5DYoBTntYLQuc7vNg9DkytWuJAQ?e=F4NR2v). Then extract them into `$/your/path/to/onepose_datasets/LINEMOD`
 The directory should be organized in the following structure:
     ```
     |--- /your/path/to/datasets
@@ -56,8 +57,13 @@ The directory should be organized in the following structure:
     |       |--- val_data
     |       |--- test_data
     |       |--- lowtexture_test_data
+    |       |--- LINEMOD
+    |       |      |--- real_train
+    |       |      |--- real_test
+    |       |      |--- models
+    |       |      |--- yolo_detection
     ```
-You can refer to [dataset document](doc/dataset_document.md) for more informations.
+You can refer to [dataset document](doc/dataset_document.md) for more informations about OnePose_LowTexture dataset.
 
 2. Build the dataset symlinks
     ```shell
@@ -82,6 +88,18 @@ python inference.py +experiment=inference_onepose_lowtexture.yaml use_local_ray=
 ```
 Note that we perform the parallel evaluation on a single GPU with two workers by default. If your GPU memory is smaller than 6GB, you are supposed to add `use_local_ray=False` to turn off the parallelization.
 
+### Evaluation on LINEMOD Dataset
+```shell
+# Parse LINDMOD Dataset to OnePose Dataset format:
+sh scripts/parse_linemod_objs.sh
+
+# Reconstruct SfM model on real training data:
+python run.py +preprocess=sfm_inference_LINEMOD.yaml use_local_ray=True
+
+# Eval LINEMOD dataset:
+python inference.py +experiment=inference_LINEMOD.yaml use_local_ray=True verbose=True
+```
+
 ### Training
 1. Prepare ground-truth annotations. Merge annotations of training/val data:
     ```python
@@ -93,7 +111,7 @@ Note that we perform the parallel evaluation on a single GPU with two workers by
     ```python
     python train_onepose_plus.py +experiment=train.yaml exp_name=onepose_plus_train
     ```
-    Note that the default config for training uses 8 GPUs with around 23GB memory for each GPU. You can set the GPU number or ID in `trainer.gpus` and reduce the batch size in `datamodule.batch_size` to reduce the GPU memory footprint.
+    Note that the default config for training uses 8 GPUs with around 23GB VRAM for each GPU. You can set the GPU number or ID in `trainer.gpus` and reduce the batch size in `datamodule.batch_size` to reduce the GPU VRAM footprint.
    
 All model weights will be saved under `${REPO_ROOT}/models/checkpoints/${exp_name}` and logs will be saved under `${REPO_ROOT}/logs/${exp_name}`.
 You can visualize the training process by Tensorboard:

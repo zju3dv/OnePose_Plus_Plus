@@ -89,8 +89,12 @@ class OnePosePlusInferenceDataset(Dataset):
         image_dir_name = osp.basename(osp.dirname(img_path))
 
         img_ext = osp.splitext(img_path)[1]
-        intrin_path = img_path.replace("/"+image_dir_name+"/", "/intrin_ba/").replace(img_ext, ".txt")
-        assert osp.exists(intrin_path), f"{intrin_path}"
+        try:
+            intrin_path = img_path.replace("/"+image_dir_name+"/", "/intrin/").replace(img_ext, ".txt")
+            assert osp.exists(intrin_path), f"{intrin_path}"
+        except:
+            intrin_path = img_path.replace("/"+image_dir_name+"/", "/intrin_ba/").replace(img_ext, ".txt")
+            assert osp.exists(intrin_path), f"{intrin_path}"
         K = torch.from_numpy(np.loadtxt(intrin_path))  # [3*3]
         return K
 
@@ -192,7 +196,7 @@ class OnePosePlusInferenceDataset(Dataset):
                     "query_image_scale": query_img_scale[None],  # [2]
                     "query_image_path": image_path,
                     "query_intrinsic": K_crop[None],
-                    "query_intrinsic_origin": K[None]
+                    "query_intrinsic_origin": K[None] # NOTE: only used by linemod dataset
                 }
             )
 
