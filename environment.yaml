@@ -1,4 +1,4 @@
-name: neuralsfm
+name: oneposeplus
 channels:
   - pytorch
   - conda-forge
