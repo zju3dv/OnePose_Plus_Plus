@@ -15,7 +15,6 @@ use_local_ray: True
 
 dataset:
   max_num_kp3d: 15000
-  max_num_kp2d: 10000
 
   data_dir:
     - null # Will be filled by demo_pipeline.sh
