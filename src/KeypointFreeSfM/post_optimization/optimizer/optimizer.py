@@ -210,13 +210,14 @@ class Optimizer(nn.Module):
             if self.solver_type == "SecondOrder":
                 from submodules.DeepLM import Solve as SecondOrderSolve
                 # Use DeepLM lib:
-                optimized_variables = SecondOrderSolve(
+                SecondOrderSolve(
                     variables=variables,
                     constants=constants,
                     indices=indices,
                     verbose=self.verbose,
                     fn=partial(residual_format, **partial_paras),
                 )
+                optimized_variables = variables
             elif self.solver_type == "FirstOrder":
                 optimization_cfgs = {
                     "lr": self.optimize_lr[procedure],
