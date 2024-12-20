@@ -11,8 +11,7 @@
 ## TODO List
 - [x] Training, inference and demo code.
 - [x] Pipeline to reproduce the evaluation results on the OnePose dataset and proposed OnePose_LowTexture dataset.
-- [ ] Use multiple GPUs for parallelized reconstruction and evaluation of multiple objects.
-- [ ] `OnePose Cap` app: we are preparing for the release of the data capture app to the App Store (iOS only), please stay tuned.
+- [x] `OnePose Cap` app is available at the [App Store](https://apps.apple.com/cn/app/onepose-capture/id6447052065?l=en-GB) (iOS only) to capture your own training and test data.
 
 ## Installation
 
