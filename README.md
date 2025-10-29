@@ -33,7 +33,7 @@ Note that the efficient optimizer DeepLM is used in our SfM refinement phase. If
 
 [COLMAP](https://colmap.github.io/) is also used in this project for Structure-from-Motion. Please refer to the official [instructions](https://colmap.github.io/install.html) for the installation.
 
-Download the [pretrained models](https://zjueducn-my.sharepoint.com/:f:/g/personal/12121064_zju_edu_cn/EhRhr5PMG-ZLkQjClFCUYhIB_6-307bBmepX_5Cej4Z_wg?e=tSNHMn), including our 2D-3D matching and LoFTR models. Then move them to `${REPO_ROOT}/weights`.
+Download the [pretrained models](https://drive.google.com/drive/folders/1tV-w9Wpz0FKQsW8-3RhqcG-_EI9dO171?usp=sharing), including our 2D-3D matching and LoFTR models. Then move them to `${REPO_ROOT}/weights`.
 
 [Optional] You may optionally try out our web-based 3D visualization tool [Wis3D](https://github.com/zju3dv/Wis3D) for convenient and interactive visualizations of feature matches and point clouds. We also provide many other cool visualization features in Wis3D, welcome to try it out.
 
@@ -47,8 +47,8 @@ After the installation, you can refer to [this page](doc/demo.md) to run the dem
 
 ## Training and Evaluation
 ### Dataset setup 
-1. Download OnePose dataset from [here](https://drive.google.com/drive/folders/1D11oh8BXOfbsbGCtJ46z8EzZBQca-Uce) and OnePose_LowTexture dataset from [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/12121064_zju_edu_cn/ElfJC7FiK75Hhh1CF0sPVSQBdzJpeWpOfj8TZzRuxo9PUg?e=0mSTUS), and extract them into `$/your/path/to/onepose_datasets`. 
-If you want to evaluate on LINEMOD dataset, download the real training data, test data and 3D object models from [CDPN](https://github.com/LZGMatrix/CDPN_ICCV2019_ZhigangLi), and detection results by YOLOv5 from [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/12121064_zju_edu_cn/EdodUdKGwHpCuvw3Cio5DYoBTntYLQuc7vNg9DkytWuJAQ?e=sAXp4B). Then extract them into `$/your/path/to/onepose_datasets/LINEMOD`
+1. Download OnePose dataset from [here](https://drive.google.com/drive/folders/1D11oh8BXOfbsbGCtJ46z8EzZBQca-Uce) and OnePose_LowTexture dataset from [here](https://drive.google.com/file/d/12CTxpKKskhbw40eR15tlIzl54DGeVwMi/view?usp=sharing), and extract them into `$/your/path/to/onepose_datasets`. 
+If you want to evaluate on LINEMOD dataset, download the real training data, test data and 3D object models from [CDPN](https://github.com/LZGMatrix/CDPN_ICCV2019_ZhigangLi), and detection results by YOLOv5 from [here](https://drive.google.com/file/d/1s-OQv6mWgEvRHjPGABH0e29Xb8SLhQHW/view?usp=sharing). Then extract them into `$/your/path/to/onepose_datasets/LINEMOD`
 The directory should be organized in the following structure:
     ```
     |--- /your/path/to/datasets
