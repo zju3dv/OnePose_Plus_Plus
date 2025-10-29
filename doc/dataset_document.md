@@ -1,6 +1,6 @@
 # Dataset Document
 ## Introduction
-The proposed OnePose_LowTexture dataset contains 40 objects with 80 sequences, and eight objects are coupled with a scanned model. The main part of the dataset is placed [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/12121064_zju_edu_cn/EUNsHyFIC7VDhXAYKYokkAIBpqosApirfpVoa7FBs2ogoA?e=Fko6uI), and scanned models are placed [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/12121064_zju_edu_cn/EaLHdKJF45xOu4Kls5eGkqwB3MVd1Pjo0QjLsfh79XIiGw?e=VXYOaA). In our experiment, we use all of the objects for the test.
+The proposed OnePose_LowTexture dataset contains 40 objects with 80 sequences, and eight objects are coupled with a scanned model. The main part of the dataset is placed [here](https://drive.google.com/file/d/12CTxpKKskhbw40eR15tlIzl54DGeVwMi/view?usp=drive_link), and scanned models are placed [here](https://drive.google.com/file/d/1I_6fj9ubtEhJDrCCof0ohUJ3qXelvxRA/view?usp=sharing). In our experiment, we use all of the objects for the test.
 Note that scanned models are only used for evaluation and to facilitate further research. Our method does not require a known object model.
 
 ## Data Structure
