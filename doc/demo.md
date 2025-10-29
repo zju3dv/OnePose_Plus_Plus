@@ -1,11 +1,10 @@
 # Run Demo on Custom Data
 In this tutorial we introduce the demo of OnePose running with data captured
 with our **OnePose Cap** application available for iOS device. 
-The app is still under preparing for release.
-However, you can try it with the [example demo data](https://zjueducn-my.sharepoint.com/:f:/g/personal/12121064_zju_edu_cn/EqgGWk0nHxxAmdv5HLRWTQsBMTLw32Zwr04a2j7NQbI_HQ?e=C0bbpw) and skip the first step.  
+You can collect your own data by following the steps below, or directly use our [example demo data](https://drive.google.com/file/d/15SfRd_h5DPb6FkZzcz7lcIKV0TmgGei9/view?usp=sharing) to skip Step 1 and quickly try out our model.
 
 ### Step 1: Capture the mapping sequence and the test sequence with OnePose Cap. 
-#### The app is under brewing🍺 coming soon.
+#### The app (IOS only) is available at [Appstore](https://apps.apple.com/cn/app/onepose-capture/id6447052065?l=en-GB).
 
 ### Step 2: Organize the file structure of collected sequences
 1. Download the captured mapping sequence and the test sequence to the PC by the provided url in app.
@@ -16,7 +15,7 @@ However, you can try it with the [example demo data](https://zjueducn-my.sharepo
     |       |       |---your_obj_name-annotate
     |       |       |---your_obj_name-test
     ```
-   Refer to the [demo data](https://zjueducn-my.sharepoint.com/:f:/g/personal/12121064_zju_edu_cn/EqgGWk0nHxxAmdv5HLRWTQsBMTLw32Zwr04a2j7NQbI_HQ?e=C0bbpw) as an example.
+   Refer to the [demo data](https://drive.google.com/file/d/15SfRd_h5DPb6FkZzcz7lcIKV0TmgGei9/view?usp=sharing) as an example.
 3. Link the collected data to the project directory
     ```shell
     REPO_ROOT=/path/to/OnePose
